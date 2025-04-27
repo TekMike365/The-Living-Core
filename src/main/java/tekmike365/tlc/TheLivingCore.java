@@ -38,14 +38,27 @@ public class TheLivingCore implements ModInitializer {
 		});
 	}
 
+	public static boolean makeLiving(ServerWorld world, BlockPos blockPos) {
+		// TODO: implement
+
+		tlcChunks.addChunk(new TLCChunk(world, world.getWorldChunk(blockPos)));
+
+		return false;
+	}
+
+	public static boolean makeDead(ServerWorld world, BlockPos blockPos) {
+		// TODO: implement
+		return false;
+	}
+
 	private static int executeVivereCommand(CommandContext<ServerCommandSource> context) {
 		ServerCommandSource source = context.getSource();
 
 		BlockPos blockPos = BlockPosArgumentType.getBlockPos(context, "block");
-		source.sendFeedback(() -> Text.literal("block: %s".formatted(blockPos.toString())), true);
+		source.sendFeedback(() -> Text.literal("Made the block living at %d, %d, %d"
+				.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
 
-		ServerWorld world = source.getWorld();
-		tlcChunks.addChunk(new TLCChunk(world, world.getWorldChunk(blockPos)));
+		makeLiving(source.getWorld(), blockPos);
 
 		return 0;
 	}
@@ -54,7 +67,10 @@ public class TheLivingCore implements ModInitializer {
 		ServerCommandSource source = context.getSource();
 
 		BlockPos blockPos = BlockPosArgumentType.getBlockPos(context, "block");
-		source.sendFeedback(() -> Text.literal("block: %s".formatted(blockPos.toString())), true);
+		source.sendFeedback(() -> Text.literal("Made the block dead at %d, %d, %d"
+				.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
+
+		makeDead(source.getWorld(), blockPos);
 
 		return 0;
 	}
