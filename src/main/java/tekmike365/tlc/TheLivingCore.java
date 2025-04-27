@@ -1,6 +1,7 @@
 package tekmike365.tlc;
 
 import net.fabricmc.api.ModInitializer;
+import tekmike365.tlc.core.TheCore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ public class TheLivingCore implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		TheCore.initialize();
 	}
 
 }
