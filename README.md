@@ -1,3 +1,3 @@
-# Viva Core
+# The Living Core
 
 > A minecraft experiment

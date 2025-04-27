@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "tlc",
 	"version": "${version}",
-	"name": "Viva Core",
+	"name": "The Living Core",
 	"description": "A Minecraft experiment.",
 	"authors": [
 		"TekMike365"
