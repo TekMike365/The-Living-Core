@@ -1,4 +1,4 @@
-package tekmike365.vivacore.mixin;
+package tekmike365.tlc.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

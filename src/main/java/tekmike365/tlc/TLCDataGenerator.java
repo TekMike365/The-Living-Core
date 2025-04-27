@@ -1,9 +1,9 @@
-package tekmike365.vivacore;
+package tekmike365.tlc;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
-public class VivaCoreDataGenerator implements DataGeneratorEntrypoint {
+public class TLCDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {

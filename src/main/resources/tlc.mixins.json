@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "tekmike365.vivacore.mixin",
+	"package": "tekmike365.tlc.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin"

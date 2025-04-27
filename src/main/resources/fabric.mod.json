@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "viva-core",
+	"id": "tlc",
 	"version": "${version}",
 	"name": "Viva Core",
 	"description": "A Minecraft experiment.",
@@ -8,22 +8,22 @@
 		"TekMike365"
 	],
 	"contact": {
-		"homepage": "https://github.com/TekMike365/Viva-Core",
-		"sources": "https://github.com/TekMike365/Viva-Core"
+		"homepage": "https://github.com/TekMike365/tlc",
+		"sources": "https://github.com/TekMike365/tlc"
 	},
 	"license": "MIT",
-	"icon": "assets/viva-core/icon.png",
+	"icon": "assets/tlc/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"tekmike365.vivacore.VivaCore"
+			"tekmike365.tlc.TheLivingCore"
 		],
 		"fabric-datagen": [
-			"tekmike365.vivacore.VivaCoreDataGenerator"
+			"tekmike365.tlc.TLCDataGenerator"
 		]
 	},
 	"mixins": [
-		"viva-core.mixins.json"
+		"tlc.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.12",
