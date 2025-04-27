@@ -19,9 +19,19 @@ public class TheCore {
         return 0;
     };
 
+    private static final Command<ServerCommandSource> COMMAND_2 = context -> {
+        ServerCommandSource source = context.getSource();
+
+        ServerPlayerEntity player = source.getPlayer();
+        player.sendMessage(Text.literal("YEEEEEEEEET x2"));
+
+        return 0;
+    };
+
     public static void initialize() {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            dispatcher.register(CommandManager.literal("test_command").executes(COMMAND));
+            dispatcher.register(CommandManager.literal("test_command").requires(source -> source.hasPermissionLevel(1)).executes(COMMAND)
+                    .then(CommandManager.literal("cmd2").executes(COMMAND_2)));
         });
     }
 }
