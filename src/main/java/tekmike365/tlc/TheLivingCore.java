@@ -18,7 +18,7 @@ public class TheLivingCore implements ModInitializer {
 	public static final String MOD_ID = "tlc";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	private static TLCChunkPool tlcChunks = new TLCChunkPool();
+	private static LivingChunkPool tlcChunks = new LivingChunkPool();
 
 	@Override
 	public void onInitialize() {
@@ -34,14 +34,14 @@ public class TheLivingCore implements ModInitializer {
 		});
 
 		ServerChunkEvents.CHUNK_UNLOAD.register((world, chunk) -> {
-			tlcChunks.removeChunk(new TLCChunk(world, chunk));
+			tlcChunks.removeChunk(new LivingChunk(world, chunk));
 		});
 	}
 
 	public static boolean makeLiving(ServerWorld world, BlockPos blockPos) {
 		// TODO: implement
 
-		tlcChunks.addChunk(new TLCChunk(world, world.getWorldChunk(blockPos)));
+		tlcChunks.addChunk(new LivingChunk(world, world.getWorldChunk(blockPos)));
 
 		return false;
 	}

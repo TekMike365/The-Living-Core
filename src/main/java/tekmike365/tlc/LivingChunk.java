@@ -3,12 +3,12 @@ package tekmike365.tlc;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.chunk.WorldChunk;
 
-public class TLCChunk {
+public class LivingChunk {
 
     public ServerWorld world;
     public WorldChunk chunk;
 
-    public TLCChunk(ServerWorld world, WorldChunk chunk) {
+    public LivingChunk(ServerWorld world, WorldChunk chunk) {
         this.world = world;
         this.chunk = chunk;
 
