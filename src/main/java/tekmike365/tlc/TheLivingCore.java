@@ -9,6 +9,7 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+
 import com.mojang.brigadier.context.CommandContext;
 
 import org.slf4j.Logger;
@@ -17,8 +18,6 @@ import org.slf4j.LoggerFactory;
 public class TheLivingCore implements ModInitializer {
 	public static final String MOD_ID = "tlc";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	private static LivingChunkPool tlcChunks = new LivingChunkPool();
 
 	@Override
 	public void onInitialize() {
@@ -34,19 +33,16 @@ public class TheLivingCore implements ModInitializer {
 		});
 
 		ServerChunkEvents.CHUNK_LOAD.register((world, chunk) -> {
-			// TODO: load living chunks
+			// TODO: Load
 		});
 
 		ServerChunkEvents.CHUNK_UNLOAD.register((world, chunk) -> {
-			tlcChunks.removeChunk(new LivingChunk(world, chunk));
+			// TODO: unload
 		});
 	}
 
 	public static boolean makeLiving(ServerWorld world, BlockPos blockPos) {
 		// TODO: implement
-
-		tlcChunks.addChunk(new LivingChunk(world, world.getWorldChunk(blockPos)));
-
 		return false;
 	}
 
