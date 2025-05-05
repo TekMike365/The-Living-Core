@@ -5,15 +5,15 @@ import java.util.List;
 
 public class LivingChunkPool {
 
-	private static List<LivingChunk> tlcChunks = new ArrayList<>();
+	private static List<LivingChunk> livingChunks = new ArrayList<>();
 
     public int size() {
-        return tlcChunks.size();
+        return livingChunks.size();
     }
 
     public int indexOf(LivingChunk tlcChunk) {
-        for (int i = 0; i < tlcChunks.size(); i++) {
-            if (tlcChunks.get(i).has(tlcChunk.world, tlcChunk.chunk))
+        for (int i = 0; i < livingChunks.size(); i++) {
+            if (livingChunks.get(i).has(tlcChunk.world, tlcChunk.chunk))
                 return i;
         }
         return -1;
@@ -27,7 +27,7 @@ public class LivingChunkPool {
         int tlcChunkIdx = indexOf(tlcChunk);
         if (tlcChunkIdx != -1)
             return false;
-        tlcChunks.add(tlcChunk);
+        livingChunks.add(tlcChunk);
         TheLivingCore.LOGGER.info("added TLCChunk: %s (size: %d)".formatted(tlcChunk.chunk.getPos().toString(), size()));
         return true;
     }
@@ -36,7 +36,7 @@ public class LivingChunkPool {
         int tlcChunkIdx = indexOf(tlcChunk);
         if (tlcChunkIdx == -1)
             return false;
-        tlcChunks.remove(tlcChunkIdx).save();
+        livingChunks.remove(tlcChunkIdx).save();
         TheLivingCore.LOGGER.info("removed TLCChunk: %s (size: %d)".formatted(tlcChunk.chunk.getPos().toString(), size()));
         return true;
     }

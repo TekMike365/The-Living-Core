@@ -33,6 +33,10 @@ public class TheLivingCore implements ModInitializer {
 							.executes(TheLivingCore::executeMoriorCommand)));
 		});
 
+		ServerChunkEvents.CHUNK_LOAD.register((world, chunk) -> {
+			// TODO: load living chunks
+		});
+
 		ServerChunkEvents.CHUNK_UNLOAD.register((world, chunk) -> {
 			tlcChunks.removeChunk(new LivingChunk(world, chunk));
 		});
@@ -53,24 +57,32 @@ public class TheLivingCore implements ModInitializer {
 
 	private static int executeVivereCommand(CommandContext<ServerCommandSource> context) {
 		ServerCommandSource source = context.getSource();
-
 		BlockPos blockPos = BlockPosArgumentType.getBlockPos(context, "block");
-		source.sendFeedback(() -> Text.literal("Made the block living at %d, %d, %d"
-				.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
 
-		makeLiving(source.getWorld(), blockPos);
+		boolean result = makeLiving(source.getWorld(), blockPos);
+		if (result) {
+			source.sendFeedback(() -> Text.literal("Made the block living at %d, %d, %d"
+					.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
+		} else {
+			source.sendFeedback(() -> Text.literal("Couldn't make the block living at %d, %d, %d"
+					.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
+		}
 
 		return 0;
 	}
 
 	private static int executeMoriorCommand(CommandContext<ServerCommandSource> context) {
 		ServerCommandSource source = context.getSource();
-
 		BlockPos blockPos = BlockPosArgumentType.getBlockPos(context, "block");
-		source.sendFeedback(() -> Text.literal("Made the block dead at %d, %d, %d"
-				.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
 
-		makeDead(source.getWorld(), blockPos);
+		boolean result = makeDead(source.getWorld(), blockPos);
+		if (result) {
+			source.sendFeedback(() -> Text.literal("Made the block dead at %d, %d, %d"
+					.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
+		} else {
+			source.sendFeedback(() -> Text.literal("Couldn't make the block dead at %d, %d, %d"
+					.formatted(blockPos.getX(), blockPos.getY(), blockPos.getZ())), true);
+		}
 
 		return 0;
 	}
