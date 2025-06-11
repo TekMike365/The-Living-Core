@@ -22,14 +22,13 @@ public class TheLivingCore implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			dispatcher.register(CommandManager.literal("vivere")
-					.requires(source -> source.hasPermissionLevel(1))
-					.then(CommandManager.argument("block", BlockPosArgumentType.blockPos())
-							.executes(TheLivingCore::executeVivereCommand)));
-			dispatcher.register(CommandManager.literal("morior")
-					.requires(source -> source.hasPermissionLevel(1))
-					.then(CommandManager.argument("block", BlockPosArgumentType.blockPos())
-							.executes(TheLivingCore::executeMoriorCommand)));
+			dispatcher.register(CommandManager.literal("tlc").requires(source -> source.hasPermissionLevel(1))
+								.then(CommandManager.literal("vivere")
+								    .then(CommandManager.argument("block", BlockPosArgumentType.blockPos())
+									.executes(TheLivingCore::executeVivereCommand)))
+								.then(CommandManager.literal("morior")
+									.then(CommandManager.argument("block", BlockPosArgumentType.blockPos())
+									.executes(TheLivingCore::executeMoriorCommand))));
 		});
 
 		ServerChunkEvents.CHUNK_LOAD.register((world, chunk) -> {
